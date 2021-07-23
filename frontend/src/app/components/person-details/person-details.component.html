@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Prueba</a>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="http://localhost:4200/persons" class="nav-link">Lista de Persons</a>
+    </li>
+    <li class="nav-item">
+      <a href="http://localhost:4200/create" class="nav-link">Crear Personas</a>
+    </li>
+  </div>
+</nav>
+<div style="width: 500px; margin: auto;">
+    <div *ngIf="currentPerson" class="edit-form">
+      <h4>Persona</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentPerson.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            [(ngModel)]="currentPerson.last_name"
+            name="last_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Apellido Paterno</label>
+          <input
+            type="text"
+            class="form-control"
+            id="paternal_last_name"
+            [(ngModel)]="currentPerson.paternal_last_name"
+            name="paternal_last_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Apellido Materno</label>
+          <input
+            type="text"
+            class="form-control"
+            id="maternal_last_name"
+            [(ngModel)]="currentPerson.maternal_last_name"
+            name="maternal_last_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Edad</label>
+          <input
+            type="number"
+            class="form-control"
+            id="age"
+            [(ngModel)]="currentPerson.age"
+            name="age"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">RFC</label>
+          <input
+            type="text"
+            class="form-control"
+            id="rfc"
+            [(ngModel)]="currentPerson.rfc"
+            name="rfc"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Fecha de Nacimiento</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date_of_birth"
+            [(ngModel)]="currentPerson.date_of_birth"
+            name="date_of_birth"
+          />
+        </div>
+      </form>
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+        (click)="updatePerson()"
+      >
+        Actualizar
+      </button>
+      <button class="btn btn-danger mt-3" (click)="deletePerson()">
+        Eliminar
+      </button>
+      <p></p>
+    </div>
+  
+    <div *ngIf="!currentPerson">
+      <br />
+      <p>Esta persona no esta disponible.</p>
+    </div>
+  </div>

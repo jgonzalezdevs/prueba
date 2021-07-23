@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Prueba</a>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="http://localhost:4200/persons" class="nav-link">Lista de Persons</a>
+    </li>
+    <li class="nav-item">
+      <a href="http://localhost:4200/create" class="nav-link">Crear Personas</a>
+    </li>
+  </div>
+</nav>
+<div class="list row">
+
+    <div class="col-md-6">
+      <h4>Lista de Personas</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let person of persons; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setCurrentPerson(person, i)"
+        >
+        <strong>
+            {{person.name}} {{person.last_name}}
+        </strong>
+        </li>
+      </ul>
+
+      <button class="m-4 btn btn-sm btn-danger" (click)="deleteAllPersons()">
+        Delete All
+      </button>
+
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentPerson">
+        <h4>Persona</h4>
+        <div>
+          <label><strong>Nombre:</strong> {{currentPerson.name}} </label> 
+        </div>
+        <div>
+          <label><strong>Apellido:</strong> {{currentPerson.last_name}} </label>
+        </div>
+        <div>
+          <label><strong>Apellido Paternal:</strong>  {{currentPerson.paternal_last_name}} </label>
+        </div>
+        <div>
+          <label><strong>Apellido Maternal:</strong> {{currentPerson.maternal_last_name}} </label>
+        </div>
+        <div>
+          <label><strong>Edad:</strong> {{currentPerson.age}} </label>
+        </div>
+        <div>
+          <label><strong>RFC:</strong> {{currentPerson.rfc}} </label>
+        </div>
+        <div>
+          <label><strong>Fecha de Nacimiento:</strong> {{currentPerson.date_of_birth}} </label>
+        </div>
+  
+        <a class="btn btn-warning" routerLink="/persons/{{currentPerson.id}}">
+          Editar
+        </a>
+      </div>
+  
+      <div *ngIf="!currentPerson">
+        <br />
+        <p>Por favor haga click en una persona.</p>
+      </div>
+    </div>
+  </div>
+  
